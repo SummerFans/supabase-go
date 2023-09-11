@@ -13,7 +13,7 @@ const (
 )
 
 func TestFrom(t *testing.T) {
-	client, err := supabase.NewClient(API_URL, API_KEY, nil)
+	client, err := supabase.NewClient(API_URL, API_KEY, "", nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}
@@ -22,7 +22,7 @@ func TestFrom(t *testing.T) {
 }
 
 func TestRpc(t *testing.T) {
-	client, err := supabase.NewClient(API_URL, API_KEY, nil)
+	client, err := supabase.NewClient(API_URL, API_KEY, "", nil)
 	if err != nil {
 		fmt.Println("cannot initalize client", err)
 	}

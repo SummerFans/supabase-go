@@ -21,13 +21,18 @@ type ClientOptions struct {
 	Db      *RestOptions
 }
 
-func NewClient(url, key string, options *ClientOptions) (*Client, error) {
+func NewClient(url, key, bearerKey string, options *ClientOptions) (*Client, error) {
 	if url == "" || key == "" {
 		return nil, errors.New("url and key are required")
 	}
 
+	// If bearerKey is not set, use key
+	if bearerKey == "" {
+		bearerKey = key
+	}
+
 	defaultHeaders := map[string]string{
-		"Authorization": "Bearer " + key,
+		"Authorization": "Bearer " + bearerKey,
 		"apikey":        key,
 	}
 
